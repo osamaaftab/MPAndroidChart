@@ -127,6 +127,11 @@ public abstract class BaseDataSet<T extends Entry> implements IDataSet<T> {
         return mColors;
     }
 
+    @Override
+    public void setColorsForDataSet(int[] colors){
+        setColors(colors);
+    }
+
     public List<Integer> getValueColors() {
         return mValueColors;
     }
