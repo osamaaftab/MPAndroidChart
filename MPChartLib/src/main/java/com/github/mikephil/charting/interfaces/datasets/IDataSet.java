@@ -70,6 +70,9 @@ public interface IDataSet<T extends Entry> {
      */
     void calcMinMaxY(float fromX, float toX);
 
+
+    void setColors(int[] colors);
+
     /**
      * Returns the first Entry object found at the given x-value with binary
      * search.
