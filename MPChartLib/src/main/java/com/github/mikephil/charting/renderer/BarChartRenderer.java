@@ -23,6 +23,8 @@ import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.util.List;
 
+import static com.github.mikephil.charting.utils.ColorTemplate.rgb;
+
 public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
     protected BarDataProvider mChart;
@@ -163,7 +165,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             if (!isSingleColor) {
                 // Set the color for the currently drawn value. If the index
                 // is out of bounds, reuse colors.
-                mRenderPaint.setColor(dataSet.getColor(pos));
+                mRenderPaint.setColor(rgb("#FFFF00"));
             }
 
             if (isCustomFill) {
