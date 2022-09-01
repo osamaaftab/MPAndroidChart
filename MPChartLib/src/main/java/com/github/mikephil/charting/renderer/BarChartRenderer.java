@@ -159,8 +159,8 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             Log.d("Osamaarray", Arrays.toString(e.getColors()));
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
                 Log.d("Osamaposition",String.valueOf(pos % e.getColors().length));
-                mRenderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-                mRenderPaint.setStyle(Paint.Style.FILL);
+                Log.d("Osamaposition",String.valueOf(e.getColors()[pos % e.getColors().length]));
+
                 mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
 
                 if (!mViewPortHandler.isInBoundsLeft(buffer.buffer[j + 2]))

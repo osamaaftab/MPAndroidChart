@@ -187,10 +187,14 @@ public class Fill
                     int previousColor = paint.getColor();
 
                     // set
-                    //paint.setStyle(Paint.Style.FILL);
-                    //paint.setColor(mFinalColor);
+                    paint.setStyle(Paint.Style.FILL);
+                    paint.setColor(mFinalColor);
 
                     c.drawRect(left, top, right, bottom, paint);
+
+                    // restore
+                    paint.setColor(previousColor);
+                    paint.setStyle(previous);
                 }
             }
             break;
