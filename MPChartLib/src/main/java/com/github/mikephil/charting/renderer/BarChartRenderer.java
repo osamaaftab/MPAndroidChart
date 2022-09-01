@@ -167,7 +167,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 if (!isSingleColor) {
                     // Set the color for the currently drawn value. If the index
                     // is out of bounds, reuse colors.
-                    mRenderPaint.setColor(e.getColors()[pos]);
+                    mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
                 }
 
                 if (isCustomFill) {
