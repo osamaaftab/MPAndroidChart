@@ -170,19 +170,18 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                     // Set the color for the currently drawn value. If the index
                     // is out of bounds, reuse colors.
 
-                if (isCustomFill) {
-                    dataSet.getFill(pos)
-                            .fillRect(
-                                    c, mRenderPaint,
-                                    buffer.buffer[j],
-                                    buffer.buffer[j + 1],
-                                    buffer.buffer[j + 2],
-                                    buffer.buffer[j + 3],
-                                    isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
-                } else {
+//                if (isCustomFill) {
+//                    dataSet.getFill(pos).fillRect(
+//                                    c, mRenderPaint,
+//                                    buffer.buffer[j],
+//                                    buffer.buffer[j + 1],
+//                                    buffer.buffer[j + 2],
+//                                    buffer.buffer[j + 3],
+//                                    isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
+//                } else {
                     c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
                             buffer.buffer[j + 3], mRenderPaint);
-                }
+              //  }
 
                 if (drawBorder) {
                     c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
