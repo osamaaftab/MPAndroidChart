@@ -156,10 +156,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
              i < count;
              i++) {
             BarEntry e = dataSet.getEntryForIndex(i);
-            Log.d("Osamaarray", Arrays.toString(e.getColors()));
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
-                Log.d("Osamaposition",String.valueOf(pos % e.getColors().length));
-                Log.d("Osamaposition",String.valueOf(e.getColors()[pos % e.getColors().length]));
 
                 mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
 

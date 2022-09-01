@@ -176,7 +176,7 @@ public class Fill
                     int save = c.save();
 
                     c.clipRect(left, top, right, bottom);
-                    c.drawColor(mFinalColor);
+                    c.drawColor(paint.getColor());
 
                     c.restoreToCount(save);
                 }
@@ -188,12 +188,12 @@ public class Fill
 
                     // set
                     paint.setStyle(Paint.Style.FILL);
-                    paint.setColor(mFinalColor);
+                    paint.setColor(paint.getColor());
 
                     c.drawRect(left, top, right, bottom, paint);
 
                     // restore
-                    paint.setColor(previousColor);
+                    paint.setColor(paint.getColor());
                     paint.setStyle(previous);
                 }
             }
