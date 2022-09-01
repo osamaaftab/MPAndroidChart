@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.buffer.BarBuffer;
@@ -167,6 +168,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                     // Set the color for the currently drawn value. If the index
                     // is out of bounds, reuse colors.
                     mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
+                    Log.d("Osamacolor","e.getColors()[pos % e.getColors().length]");
 
 
                 if (isCustomFill) {
