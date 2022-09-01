@@ -151,41 +151,45 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
         if (isSingleColor) {
             mRenderPaint.setColor(dataSet.getColor());
         }
+        for (int i = 0, count = Math.min((int)(Math.ceil((float)(dataSet.getEntryCount()) * phaseX)), dataSet.getEntryCount());
+             i < count;
+             i++) {
+            BarEntry e = dataSet.getEntryForIndex(i);
 
-        for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
+            for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
 
-            BarEntry e = dataSet.getEntryForIndex(j);
-            if (!mViewPortHandler.isInBoundsLeft(buffer.buffer[j + 2]))
-                continue;
+                if (!mViewPortHandler.isInBoundsLeft(buffer.buffer[j + 2]))
+                    continue;
 
-            if (!mViewPortHandler.isInBoundsRight(buffer.buffer[j]))
-                break;
+                if (!mViewPortHandler.isInBoundsRight(buffer.buffer[j]))
+                    break;
 
-            if (!isSingleColor) {
-                // Set the color for the currently drawn value. If the index
-                // is out of bounds, reuse colors.
-                mRenderPaint.setColor(e.getColors()[pos]);
+                if (!isSingleColor) {
+                    // Set the color for the currently drawn value. If the index
+                    // is out of bounds, reuse colors.
+                    mRenderPaint.setColor(e.getColors()[pos]);
+                }
+
+                if (isCustomFill) {
+                    dataSet.getFill(pos)
+                            .fillRect(
+                                    c, mRenderPaint,
+                                    buffer.buffer[j],
+                                    buffer.buffer[j + 1],
+                                    buffer.buffer[j + 2],
+                                    buffer.buffer[j + 3],
+                                    isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
+                } else {
+                    c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
+                            buffer.buffer[j + 3], mRenderPaint);
+                }
+
+                if (drawBorder) {
+                    c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
+                            buffer.buffer[j + 3], mBarBorderPaint);
+                }
             }
 
-            if (isCustomFill) {
-                dataSet.getFill(pos)
-                        .fillRect(
-                                c, mRenderPaint,
-                                buffer.buffer[j],
-                                buffer.buffer[j + 1],
-                                buffer.buffer[j + 2],
-                                buffer.buffer[j + 3],
-                                isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
-            }
-            else {
-                c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
-                        buffer.buffer[j + 3], mRenderPaint);
-            }
-
-            if (drawBorder) {
-                c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
-                        buffer.buffer[j + 3], mBarBorderPaint);
-            }
         }
     }
 
