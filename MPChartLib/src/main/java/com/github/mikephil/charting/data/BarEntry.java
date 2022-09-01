@@ -3,6 +3,8 @@ package com.github.mikephil.charting.data;
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.Nullable;
+
 import com.github.mikephil.charting.highlight.Range;
 
 /**
@@ -113,8 +115,8 @@ public class BarEntry extends Entry {
      * @param vals - the stack values, use at least 2
      * @param icon - icon image
      */
-    public BarEntry(float x, float[] vals, Drawable icon) {
-        super(x, calcSum(vals), icon);
+    public BarEntry(float x, float[] vals, Drawable icon, @Nullable int[]colors) {
+        super(x, calcSum(vals), icon,colors);
 
         this.mYVals = vals;
         calcPosNegSum();

@@ -6,6 +6,8 @@ import android.os.Parcel;
 import android.os.ParcelFormatException;
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
+
 import com.github.mikephil.charting.utils.Utils;
 
 /**
@@ -53,8 +55,8 @@ public class Entry extends BaseEntry implements Parcelable {
      * @param y the y value (the actual value of the entry)
      * @param icon icon image
      */
-    public Entry(float x, float y, Drawable icon) {
-        super(y, icon);
+    public Entry(float x, float y, Drawable icon,@Nullable int[]colors) {
+        super(y, icon,colors);
         this.x = x;
     }
 
