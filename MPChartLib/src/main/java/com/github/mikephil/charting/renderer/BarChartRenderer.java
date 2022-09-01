@@ -22,6 +22,7 @@ import com.github.mikephil.charting.utils.Transformer;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
@@ -155,7 +156,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
              i < count;
              i++) {
             BarEntry e = dataSet.getEntryForIndex(i);
-
+            Log.d("Osamaarray", Arrays.toString(e.getColors()));
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
 
                 if (!mViewPortHandler.isInBoundsLeft(buffer.buffer[j + 2]))
