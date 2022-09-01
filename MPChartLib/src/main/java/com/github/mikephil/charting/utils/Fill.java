@@ -167,37 +167,37 @@ public class Fill
             case EMPTY:
                 return;
 
-            case COLOR:
-            {
-                if (mFinalColor == null) return;
-
-                if (isClipPathSupported())
-                {
-                    int save = c.save();
-
-                    c.clipRect(left, top, right, bottom);
-                    c.drawColor(paint.getColor());
-
-                    c.restoreToCount(save);
-                }
-                else
-                {
-                    // save
-                    Paint.Style previous = paint.getStyle();
-                    int previousColor = paint.getColor();
-
-                    // set
-                    paint.setStyle(Paint.Style.FILL);
-                    paint.setColor(paint.getColor());
-
-                    c.drawRect(left, top, right, bottom, paint);
-
-                    // restore
-                    paint.setColor(paint.getColor());
-                    paint.setStyle(previous);
-                }
-            }
-            break;
+//            case COLOR:
+//            {
+//                if (mFinalColor == null) return;
+//
+//                if (isClipPathSupported())
+//                {
+//                    int save = c.save();
+//
+//                    c.clipRect(left, top, right, bottom);
+//                    c.drawColor(paint.getColor());
+//
+//                    c.restoreToCount(save);
+//                }
+//                else
+//                {
+//                    // save
+//                    Paint.Style previous = paint.getStyle();
+//                    int previousColor = paint.getColor();
+//
+//                    // set
+//                    paint.setStyle(Paint.Style.FILL);
+//                    paint.setColor(paint.getColor());
+//
+//                    c.drawRect(left, top, right, bottom, paint);
+//
+//                    // restore
+//                    paint.setColor(paint.getColor());
+//                    paint.setStyle(previous);
+//                }
+//            }
+            //break;
 
             case LINEAR_GRADIENT:
             {
