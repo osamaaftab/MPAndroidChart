@@ -145,12 +145,11 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
         trans.pointValuesToPixel(buffer.buffer);
 
         final boolean isCustomFill = dataSet.getFills() != null && !dataSet.getFills().isEmpty();
-        final boolean isSingleColor = dataSet.getColors().size() == 1;
         final boolean isInverted = mChart.isInverted(dataSet.getAxisDependency());
 
-        if (isSingleColor) {
-            mRenderPaint.setColor(dataSet.getColor());
-        }
+//        if (isSingleColor) {
+//            mRenderPaint.setColor(dataSet.getColor());
+//        }
         for (int i = 0, count = Math.min((int)(Math.ceil((float)(dataSet.getEntryCount()) * phaseX)), dataSet.getEntryCount());
              i < count;
              i++) {
@@ -164,11 +163,11 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 if (!mViewPortHandler.isInBoundsRight(buffer.buffer[j]))
                     break;
 
-                if (!isSingleColor) {
+
                     // Set the color for the currently drawn value. If the index
                     // is out of bounds, reuse colors.
                     mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
-                }
+
 
                 if (isCustomFill) {
                     dataSet.getFill(pos)
