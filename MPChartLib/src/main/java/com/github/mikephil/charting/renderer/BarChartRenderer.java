@@ -159,8 +159,9 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
              i < count;
              i++) {
             BarEntry e = dataSet.getEntryForIndex(i);
+            Log.d("Osamabar",String.valueOf(i));
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
-                Log.d("Osamacolor",String.valueOf(e.getColors()[pos % e.getColors().length]));
+                Log.d("Osamabarcolor",String.valueOf(e.getColors()[pos % e.getColors().length]));
                 Paint mRenderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
                 mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
                 mRenderPaint.setStyle(Paint.Style.FILL);
