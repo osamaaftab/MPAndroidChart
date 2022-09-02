@@ -35,6 +35,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
     protected RectF mBarRect = new RectF();
 
     protected BarBuffer[] mBarBuffers;
+    protected int[] mColors;
 
     protected Paint mShadowPaint;
     protected Paint mBarBorderPaint;
@@ -62,11 +63,13 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
         BarData barData = mChart.getBarData();
         mBarBuffers = new BarBuffer[barData.getDataSetCount()];
+        mColors = new int[barData.getDataSetCount()];
 
         for (int i = 0; i < mBarBuffers.length; i++) {
             IBarDataSet set = barData.getDataSetByIndex(i);
+            BarEntry e = set.getEntryForIndex(i);
             mBarBuffers[i] = new BarBuffer(set.getEntryCount() * 4 * (set.isStacked() ? set.getStackSize() : 1),
-                    barData.getDataSetCount(), set.isStacked());
+                    barData.getDataSetCount(), set.isStacked(),e.getColors());
         }
     }
 
@@ -157,9 +160,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
              i++) {
             BarEntry e = dataSet.getEntryForIndex(i);
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
-                Paint mRenderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-                mRenderPaint.setStyle(Paint.Style.FILL);
-                mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
+                mRenderPaint.setColor(buffer.getmColors()[pos % buffer.getmColors().length]);
 
                 if (!mViewPortHandler.isInBoundsLeft(buffer.buffer[j + 2]))
                     continue;

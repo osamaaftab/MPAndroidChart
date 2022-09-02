@@ -9,15 +9,17 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
     protected int mDataSetIndex = 0;
     protected int mDataSetCount = 1;
     protected boolean mContainsStacks = false;
+    protected int[] mColors ;
     protected boolean mInverted = false;
 
     /** width of the bar on the x-axis, in values (not pixels) */
     protected float mBarWidth = 1f;
 
-    public BarBuffer(int size, int dataSetCount, boolean containsStacks) {
+    public BarBuffer(int size, int dataSetCount, boolean containsStacks,int[] mColors) {
         super(size);
         this.mDataSetCount = dataSetCount;
         this.mContainsStacks = containsStacks;
+        this.mColors = mColors;
     }
 
     public void setBarWidth(float barWidth) {
@@ -126,5 +128,9 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
         }
 
         reset();
+    }
+
+    public int[] getmColors() {
+        return mColors;
     }
 }
