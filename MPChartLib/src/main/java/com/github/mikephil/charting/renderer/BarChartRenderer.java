@@ -161,7 +161,10 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             BarEntry e = dataSet.getEntryForIndex(i);
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
                 Log.d("Osamacolor",String.valueOf(e.getColors()[pos % e.getColors().length]));
+                Paint mRenderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
                 mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
+                mRenderPaint.setStyle(Paint.Style.FILL);
+
 
                 if (!mViewPortHandler.isInBoundsLeft(buffer.buffer[j + 2]))
                     continue;
@@ -173,18 +176,18 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                     // Set the color for the currently drawn value. If the index
                     // is out of bounds, reuse colors.
 
-//                if (isCustomFill) {
-//                    dataSet.getFill(pos).fillRect(
-//                                    c, mRenderPaint,
-//                                    buffer.buffer[j],
-//                                    buffer.buffer[j + 1],
-//                                    buffer.buffer[j + 2],
-//                                    buffer.buffer[j + 3],
-//                                    isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
-//                } else {
+                if (isCustomFill) {
+                    dataSet.getFill(pos).fillRect(
+                                    c, mRenderPaint,
+                                    buffer.buffer[j],
+                                    buffer.buffer[j + 1],
+                                    buffer.buffer[j + 2],
+                                    buffer.buffer[j + 3],
+                                    isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
+                } else {
                     c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
                             buffer.buffer[j + 3], mRenderPaint);
-              //  }
+               }
 
                 if (drawBorder) {
                     c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
