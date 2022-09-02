@@ -179,8 +179,8 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 //                                    buffer.buffer[j + 3],
 //                                    isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
 //                } else {
-                    c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
-                            buffer.buffer[j + 3], mRenderPaint);
+                    //c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
+                      //      buffer.buffer[j + 3], mRenderPaint);
               //  }
 
                 if (drawBorder) {
@@ -353,7 +353,8 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                             }
 
                             // draw stack values
-                        } else {
+                        }
+                        else {
 
                             float[] transformed = new float[vals.length * 2];
 
