@@ -155,18 +155,15 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 //        if (isSingleColor) {
 //            mRenderPaint.setColor(dataSet.getColor());
 //        }
-        for (int i = 0, count = Math.min((int)(Math.ceil((float)(dataSet.getEntryCount()) * phaseX)), dataSet.getEntryCount());
-             i < count;
-             i++) {
-            BarEntry e = dataSet.getEntryForIndex(i);
-            Log.d("Osamabar",String.valueOf(i));
+            int counter = 0 ;
+            BarEntry e = null;
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
-                Log.d("OsamaJpos",String.valueOf(j));
-                Log.d("Osamapos",String.valueOf(pos));
-                Log.d("Osamabarcolor",String.valueOf(e.getColors()[pos % e.getColors().length]));
-                Paint mRenderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                if (j == 0 || j % 3 == 0) {
+                    e = dataSet.getEntryForIndex(counter);
+                    counter++;
+                }
+
                 mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
-                mRenderPaint.setStyle(Paint.Style.FILL);
 
 
                 if (!mViewPortHandler.isInBoundsLeft(buffer.buffer[j + 2]))
@@ -197,8 +194,6 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                             buffer.buffer[j + 3], mBarBorderPaint);
                 }
             }
-
-        }
     }
 
     protected void prepareBarHighlight(float x, float y1, float y2, float barWidthHalf, Transformer trans) {
