@@ -21,12 +21,6 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
         this.mContainsStacks = containsStacks;
     }
 
-    public BarBuffer(int size, int dataSetCount, boolean containsStacks,int[] mColors ) {
-        super(size);
-        this.mDataSetCount = dataSetCount;
-        this.mContainsStacks = containsStacks;
-        this.mColors = mColors;
-    }
 
     public void setBarWidth(float barWidth) {
         this.mBarWidth = barWidth;
@@ -134,9 +128,5 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
         }
 
         reset();
-    }
-
-    public int[] getmColors() {
-        return mColors;
     }
 }

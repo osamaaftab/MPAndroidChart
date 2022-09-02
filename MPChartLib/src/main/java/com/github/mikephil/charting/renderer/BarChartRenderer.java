@@ -69,7 +69,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             IBarDataSet set = barData.getDataSetByIndex(i);
             BarEntry e = set.getEntryForIndex(i);
             mBarBuffers[i] = new BarBuffer(set.getEntryCount() * 4 * (set.isStacked() ? set.getStackSize() : 1),
-                    barData.getDataSetCount(), set.isStacked(),e.getColors());
+                    barData.getDataSetCount(), set.isStacked());
         }
     }
 
@@ -160,7 +160,8 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
              i++) {
             BarEntry e = dataSet.getEntryForIndex(i);
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
-                mRenderPaint.setColor(buffer.getmColors()[pos % buffer.getmColors().length]);
+                Log.d("Osamacolor",String.valueOf(e.getColors()[pos % e.getColors().length]));
+                mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
 
                 if (!mViewPortHandler.isInBoundsLeft(buffer.buffer[j + 2]))
                     continue;
