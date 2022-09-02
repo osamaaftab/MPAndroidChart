@@ -157,7 +157,8 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
              i++) {
             BarEntry e = dataSet.getEntryForIndex(i);
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
-
+                Paint mRenderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                mRenderPaint.setStyle(Paint.Style.FILL);
                 mRenderPaint.setColor(e.getColors()[pos % e.getColors().length]);
 
                 if (!mViewPortHandler.isInBoundsLeft(buffer.buffer[j + 2]))
@@ -179,8 +180,8 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 //                                    buffer.buffer[j + 3],
 //                                    isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
 //                } else {
-                    //c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
-                      //      buffer.buffer[j + 3], mRenderPaint);
+                    c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
+                            buffer.buffer[j + 3], mRenderPaint);
               //  }
 
                 if (drawBorder) {
@@ -353,8 +354,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                             }
 
                             // draw stack values
-                        }
-                        else {
+                        } else {
 
                             float[] transformed = new float[vals.length * 2];
 
