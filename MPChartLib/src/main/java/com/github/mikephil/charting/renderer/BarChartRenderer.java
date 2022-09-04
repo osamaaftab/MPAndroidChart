@@ -6,7 +6,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.buffer.BarBuffer;
@@ -73,6 +76,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void drawData(Canvas c) {
 
@@ -90,6 +94,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
     private RectF mBarShadowRectBuffer = new RectF();
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void drawDataSet(Canvas c, IBarDataSet dataSet, int index) {
 
         Transformer trans = mChart.getTransformer(dataSet.getAxisDependency());
@@ -158,7 +163,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             int counter = 0 ;
             BarEntry e = null;
             for (int j = 0, pos = 0; j < buffer.size(); j += 4, pos++) {
-                if (j == 0 || j % 3 == 0) {
+                if (j % 3 == 0) {
                     e = dataSet.getEntryForIndex(counter);
                     counter++;
                 }
@@ -185,13 +190,13 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                                     buffer.buffer[j + 3],
                                     isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
                 } else {
-                    c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
-                            buffer.buffer[j + 3], mRenderPaint);
+                    c.drawRoundRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
+                            buffer.buffer[j + 3],0f,10f, mRenderPaint);
                }
 
                 if (drawBorder) {
-                    c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
-                            buffer.buffer[j + 3], mBarBorderPaint);
+                    c.drawRoundRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
+                            buffer.buffer[j + 3], 0f,10f,mBarBorderPaint);
                 }
             }
     }
