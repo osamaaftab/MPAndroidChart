@@ -222,7 +222,7 @@ public class XAxisRenderer extends AxisRenderer {
                     }
                 }
 
-                drawLabel(c, label, x, pos, anchor, labelRotationAngleDegrees);
+                drawLabel(c, label+"osa", x, pos, anchor, labelRotationAngleDegrees);
             }
         }
     }
