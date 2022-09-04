@@ -4,6 +4,8 @@ import android.graphics.drawable.Drawable;
 
 import androidx.annotation.Nullable;
 
+import static com.github.mikephil.charting.utils.ColorTemplate.rgb;
+
 /**
  * Created by Philipp Jahoda on 02/06/16.
  */
@@ -102,6 +104,13 @@ public abstract class BaseEntry {
 
     @Nullable
     public int[] getColors() {
-        return colors;
+        if (colors == null) {
+            int[] MATERIAL_COLORS = {
+                    rgb("#9e7e7b"), rgb("#00524E"), rgb("#7b9e81")
+            };
+            return MATERIAL_COLORS;
+        } else {
+            return colors;
+        }
     }
 }

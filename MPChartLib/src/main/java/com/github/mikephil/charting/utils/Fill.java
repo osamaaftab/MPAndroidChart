@@ -6,9 +6,11 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 public class Fill
 {
@@ -158,6 +160,7 @@ public class Fill
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void fillRect(Canvas c, Paint paint,
                          float left, float top, float right, float bottom,
                          Direction gradientDirection)
