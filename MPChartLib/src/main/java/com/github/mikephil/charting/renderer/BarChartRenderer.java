@@ -139,7 +139,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 mBarShadowRectBuffer.top = mViewPortHandler.contentTop();
                 mBarShadowRectBuffer.bottom = mViewPortHandler.contentBottom();
 
-                c.drawRect(mBarShadowRectBuffer, mShadowPaint);
+                c.drawRoundRect(mBarShadowRectBuffer,0f,10f, mShadowPaint);
             }
         }
 
