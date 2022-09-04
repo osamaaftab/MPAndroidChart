@@ -139,7 +139,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 mBarShadowRectBuffer.top = mViewPortHandler.contentTop();
                 mBarShadowRectBuffer.bottom = mViewPortHandler.contentBottom();
 
-                c.drawRoundRect(mBarShadowRectBuffer,10f,10f, mShadowPaint);
+                c.drawRect(mBarShadowRectBuffer, mShadowPaint);
             }
         }
 
@@ -191,7 +191,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                                     isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
                 } else {
                     c.drawRoundRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
-                            buffer.buffer[j + 3],0f,10f, mRenderPaint);
+                            buffer.buffer[j + 3],10f,0f, mRenderPaint);
                }
 
                 if (drawBorder) {
