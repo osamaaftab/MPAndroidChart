@@ -599,12 +599,14 @@ public abstract class Utils {
             c.save();
             c.translate(translateX, translateY);
             c.rotate(angleDegrees);
-            String[]  lines = text.split(" ");
-            int fHeight = 20;
-            for(int i =0;i<lines.length;i++){
-                c.drawText(lines[i], drawOffsetX, drawOffsetY, paint);
-                drawOffsetY += fHeight;
-            }
+            c.drawText(text, drawOffsetX, drawOffsetY, paint);
+
+//            String[]  lines = text.split(" ");
+//            int fHeight = 20;
+//            for(int i =0;i<lines.length;i++){
+//                c.drawText(lines[i], drawOffsetX, drawOffsetY, paint);
+//                drawOffsetY += fHeight;
+//            }
             c.restore();
         } else {
             if (anchor.x != 0.f || anchor.y != 0.f) {
