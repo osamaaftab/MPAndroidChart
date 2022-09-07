@@ -618,12 +618,7 @@ public abstract class Utils {
             drawOffsetX += x;
             drawOffsetY += y;
 
-            String[]  lines = text.split(" ");
-            int fHeight = 20;
-            for(int i =0;i<lines.length;i++){
-                c.drawText(lines[i], drawOffsetX, drawOffsetY, paint);
-                drawOffsetY += fHeight;
-            }
+            c.drawText(text, drawOffsetX, drawOffsetY, paint);
         }
 
         paint.setTextAlign(originalTextAlign);
